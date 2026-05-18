@@ -8,7 +8,10 @@
 </head>
 <body class="bg-gray-50 min-h-screen">
     <div class="max-w-5xl mx-auto px-4 py-12">
-        <h1 class="text-3xl font-bold text-gray-900 mb-2">Israel Vacation Packages</h1>
+        <div class="mb-8">
+            <img src="{{ asset('images/potash-logo.png') }}" alt="First Class Potash Logo" class="h-40 rounded-full">
+        </div>
+        <h1 class="text-3xl font-bold text-gray-900 mb-2">First Class Potash - Israel Vacation Packages</h1>
         <p class="text-gray-500 mb-10">Curated trips, fully arranged for you.</p>
 
         @if($packages->isEmpty())

@@ -26,8 +26,7 @@ class PackageForm
                 TextInput::make('duration_days')
                     ->required()
                     ->numeric(),
-                Toggle::make('is_active')
-                    ->required(),
+                Toggle::make('is_active'),
             ]);
     }
 }
