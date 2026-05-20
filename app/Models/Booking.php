@@ -16,6 +16,27 @@ class Booking extends Model
         'end_date',
         'status',
         'notes',
+        'client1_name',
+        'client2_name',
+        'family_name',
+        'email',
+        'phone_mobile1',
+        'phone_mobile2',
+        'adults_count',
+        'children_count',
+        'language',
+        'sector',
+        'kashrut',
+        'trip_purpose',
+        'payment_method',
+        'details',
+        'confirmation_token',
+        'confirmed_at',
+    ];
+
+    protected $casts = [
+        'details' => 'array',
+        'confirmed_at' => 'datetime',
     ];
 
     public function user()

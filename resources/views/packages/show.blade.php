@@ -15,7 +15,13 @@
 
         <p class="text-gray-700 leading-relaxed mb-10">{{ $package->description }}</p>
 
-        <a href="#"
+        @if(session('success'))
+            <div class="bg-green-50 border border-green-200 text-green-700 text-sm rounded-xl px-4 py-3 mb-6">
+                {{ session('success') }}
+            </div>
+        @endif
+
+        <a href="{{ route('packages.book', $package->slug) }}"
            class="inline-block bg-blue-600 text-white font-semibold px-6 py-3 rounded-xl hover:bg-blue-700 transition">
             Book this package
         </a>
