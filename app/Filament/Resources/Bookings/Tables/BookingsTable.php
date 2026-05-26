@@ -59,6 +59,7 @@ class BookingsTable
                     ->sortable(),
             ])
             ->defaultSort('created_at', 'desc')
+            ->poll('30s')
             ->filters([
                 SelectFilter::make('status')
                     ->options([
