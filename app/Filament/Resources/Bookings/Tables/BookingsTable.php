@@ -45,13 +45,13 @@ class BookingsTable
                 TextColumn::make('status')
                     ->badge()
                     ->color(fn (string $state): string => match ($state) {
-                        'pending_confirmation' => 'gray',
-                        'initiated'            => 'warning',
-                        'confirmed'            => 'success',
-                        'in_progress'          => 'info',
-                        'completed'            => 'success',
-                        'cancelled'            => 'danger',
-                        default                => 'gray',
+                        'pending_payment' => 'gray',
+                        'paid'            => 'warning',
+                        'order_sent'      => 'info',
+                        'in_progress'     => 'primary',
+                        'completed'       => 'success',
+                        'cancelled'       => 'danger',
+                        default           => 'gray',
                     }),
                 TextColumn::make('created_at')
                     ->label('Submitted')
@@ -63,12 +63,12 @@ class BookingsTable
             ->filters([
                 SelectFilter::make('status')
                     ->options([
-                        'pending_confirmation' => 'Pending confirmation',
-                        'initiated'            => 'Initiated',
-                        'confirmed'            => 'Confirmed',
-                        'in_progress'          => 'In progress',
-                        'completed'            => 'Completed',
-                        'cancelled'            => 'Cancelled',
+                        'pending_payment' => 'Pending payment',
+                        'paid'            => 'Paid',
+                        'order_sent'      => 'Order sent',
+                        'in_progress'     => 'In progress',
+                        'completed'       => 'Completed',
+                        'cancelled'       => 'Cancelled',
                     ]),
             ])
             ->recordActions([

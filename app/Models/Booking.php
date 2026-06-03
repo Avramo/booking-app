@@ -30,13 +30,10 @@ class Booking extends Model
         'trip_purpose',
         'payment_method',
         'details',
-        'confirmation_token',
-        'confirmed_at',
     ];
 
     protected $casts = [
         'details' => 'array',
-        'confirmed_at' => 'datetime',
     ];
 
     public function user()

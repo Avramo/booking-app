@@ -2,14 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Mail\BookingConfirmed;
-use App\Mail\BookingNotification;
-use App\Mail\BookingVerification;
 use App\Models\Booking;
 use App\Models\Package;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Mail;
-use Illuminate\Support\Str;
 
 class BookingController extends Controller
 {
@@ -39,42 +34,19 @@ class BookingController extends Controller
             'sector'         => 'nullable|string',
             'kashrut'        => 'nullable|string',
             'trip_purpose'   => 'nullable|string',
-            'payment_method' => 'required|nullable|string',
+            'payment_method' => 'required|string',
             'notes'          => 'nullable|string|max:2000',
         ]);
 
         $booking = Booking::create([
             ...$validated,
-            'package_id'          => $package->id,
-            'status'              => 'pending_confirmation',
-            'confirmation_token'  => Str::uuid(),
+            'package_id' => $package->id,
+            'status'     => 'pending_payment',
         ]);
 
-        Mail::to($booking->email)->send(new BookingVerification($booking));
-
+        // Step 5: redirect to Stripe Checkout here
         return redirect()
             ->route('packages.show', $slug)
-            ->with('success', 'Please check your email to confirm your booking request.');
-    }
-
-    public function confirm(string $token)
-    {
-        $booking = Booking::where('confirmation_token', $token)
-            ->where('status', 'pending_confirmation')
-            ->firstOrFail();
-
-        $booking->update([
-            'status'       => 'initiated',
-            'confirmed_at' => now(),
-        ]);
-
-        Mail::to($booking->email)->send(new BookingConfirmed($booking));
-
-        $adminEmail = env('ADMIN_BOOKINGS_EMAIL');
-        if ($adminEmail) {
-            Mail::to($adminEmail)->send(new BookingNotification($booking));
-        }
-
-        return view('packages.booking-confirmed', compact('booking'));
+            ->with('success', 'Booking received — payment coming soon.');
     }
 }

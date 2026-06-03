@@ -25,14 +25,14 @@ class BookingForm
                             ->columnSpanFull(),
                         Select::make('status')
                             ->options([
-                                'pending_confirmation' => 'Pending confirmation',
-                                'initiated'            => 'Initiated',
-                                'confirmed'            => 'Confirmed',
-                                'in_progress'          => 'In progress',
-                                'completed'            => 'Completed',
-                                'cancelled'            => 'Cancelled',
+                                'pending_payment' => 'Pending payment',
+                                'paid'            => 'Paid',
+                                'order_sent'      => 'Order sent',
+                                'in_progress'     => 'In progress',
+                                'completed'       => 'Completed',
+                                'cancelled'       => 'Cancelled',
                             ])
-                            ->default('initiated')
+                            ->default('pending_payment')
                             ->required(),
                         Textarea::make('notes')
                             ->columnSpanFull(),
