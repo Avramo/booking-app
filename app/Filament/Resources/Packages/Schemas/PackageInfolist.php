@@ -17,6 +17,9 @@ class PackageInfolist
                 TextEntry::make('slug'),
                 TextEntry::make('description')
                     ->columnSpanFull(),
+                TextEntry::make('concierge_fee')
+                    ->label('Concierge fee')
+                    ->money('USD'),
                 IconEntry::make('is_active')
                     ->boolean(),
                 TextEntry::make('created_at')
