@@ -19,6 +19,13 @@ class Package extends Model
 
     public function bookings()
     {
-        return $this->hasMany(Booking::class); 
+        return $this->hasMany(Booking::class);
+    }
+
+    public function services()
+    {
+        return $this->belongsToMany(Service::class, 'package_services')
+            ->withPivot('sort_order')
+            ->orderByPivot('sort_order');
     }
 }
