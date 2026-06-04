@@ -8,7 +8,7 @@ use App\Http\Controllers\PackageController;
 //     return view('welcome');
 // });
 
-Route::get('/', [PackageController::class, 'index'])->name('packages.index');
+Route::get('/', [PackageController::class, 'index'])->name('home');
 Route::get('/packages', [PackageController::class, 'index'])->name('packages.index');
 Route::get('/packages/{slug}', [PackageController::class, 'show'])->name('packages.show');
 Route::get('/packages/{slug}/book', [BookingController::class, 'create'])->name('packages.book');
