@@ -5,6 +5,15 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ## Rules
 - Always read files before changing them!
 - Before writing a commit message or committing, always run `git diff --stat` and `git status` to see exactly what changed.
+- Before every commit, run these sanity checks and fix any failures before proceeding:
+  ```bash
+  # PHP syntax check on all changed PHP files
+  git diff --name-only | grep '\.php$' | xargs -I{} php -l {}
+
+  # Route and config cacheability (catches duplicate route names, missing bindings, config errors)
+  php artisan route:cache && php artisan route:clear
+  php artisan config:cache && php artisan config:clear
+  ```
 
 ## Commands
 
