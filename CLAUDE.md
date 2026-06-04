@@ -3,7 +3,8 @@
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
 ## Rules
-Always read files before changing them!
+- Always read files before changing them!
+- Before writing a commit message or committing, always run `git diff --stat` and `git status` to see exactly what changed.
 
 ## Commands
 

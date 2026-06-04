@@ -14,7 +14,10 @@ class PackageController extends Controller
 
     public function show(string $slug)
     {
-        $package = Package::where('slug', $slug)->where('is_active', true)->firstOrFail();
+        $package = Package::with(['services' => fn ($q) => $q->where('is_active', true)])
+            ->where('slug', $slug)
+            ->where('is_active', true)
+            ->firstOrFail();
         return view('packages.show', compact('package'));
     }
 }

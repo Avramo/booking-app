@@ -13,8 +13,13 @@ class Package extends Model
         'name',
         'slug',
         'description',
-        'duration_days',
         'is_active',
+        'concierge_fee',
+    ];
+
+    protected $casts = [
+        'concierge_fee' => 'decimal:2',
+        'is_active'     => 'boolean',
     ];
 
     public function bookings()

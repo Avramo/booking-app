@@ -22,7 +22,6 @@
                     <a href="{{ route('packages.show', $package->slug) }}"
                        class="block bg-white rounded-2xl shadow-sm border border-gray-100 p-6 hover:shadow-md transition">
                         <h2 class="text-lg font-semibold text-gray-900 mb-1">{{ $package->name }}</h2>
-                        <p class="text-sm text-gray-400 mb-3">{{ $package->duration_days }} days</p>
                         <p class="text-sm text-gray-600 line-clamp-3">{{ $package->description }}</p>
                         <span class="mt-4 inline-block text-sm font-medium text-blue-600">View package →</span>
                     </a>

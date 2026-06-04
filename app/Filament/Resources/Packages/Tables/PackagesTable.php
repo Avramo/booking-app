@@ -20,9 +20,10 @@ class PackagesTable
                     ->searchable(),
                 TextColumn::make('slug')
                     ->searchable(),
-                TextColumn::make('duration_days')
-                    ->numeric()
-                    ->sortable(),
+                TextColumn::make('services.name')
+                    ->label('Services')
+                    ->badge()
+                    ->separator(','),
                 IconColumn::make('is_active')
                     ->boolean(),
                 TextColumn::make('created_at')

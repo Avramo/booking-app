@@ -12,7 +12,7 @@
            class="text-sm text-blue-600 hover:underline mb-6 inline-block">← Back to {{ $package->name }}</a>
 
         <h1 class="text-2xl font-bold text-gray-900 mb-1">Book: {{ $package->name }}</h1>
-        <p class="text-sm text-gray-400 mb-8">{{ $package->duration_days }} days — fill in your details below and we'll be in touch within 24 hours.</p>
+        <p class="text-sm text-gray-400 mb-8">Fill in your details below and we'll be in touch within 24 hours.</p>
 
         @if($errors->any())
             <div class="bg-red-50 border border-red-200 rounded-xl p-4 mb-6">
