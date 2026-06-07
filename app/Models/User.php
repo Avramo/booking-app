@@ -35,8 +35,9 @@ class User extends Authenticatable implements \Filament\Models\Contracts\Filamen
         return $this->hasMany(Booking::class);
     }
 
-    public function canAccessPanel(\Filament\Panel $panel): bool 
+    public function canAccessPanel(\Filament\Panel $panel): bool
     {
-        return $this->email === env('ADMIN_EMAIL');
+        $allowed = array_map('trim', explode(',', env('ADMIN_EMAIL', '')));
+        return in_array($this->email, $allowed);
     }
 }
